@@ -1,11 +1,10 @@
-
 # Remote WebView Client
 
 ![Guition-ESP32-S3-4848S040 running Remote WebView](/images/image-001.jpg)
 
 [Demo video](https://youtu.be/rD2aYUUrv5o)
 
-This is a client that connects to [Remote WebView Server](https://github.com/strange-v/RemoteWebViewServer) вЂ” a headless browser that renders target web pages (e.g., Home Assistant dashboards) and streams them as image tiles over WebSocket to lightweight clients (ESP32 displays).
+This is a client that connects to [Remote WebView Server](https://github.com/strange-v/RemoteWebViewServer) РІР‚вЂќ a headless browser that renders target web pages (e.g., Home Assistant dashboards) and streams them as image tiles over WebSocket to lightweight clients (ESP32 displays).
 
 ## ESPHome component
 
@@ -179,40 +178,40 @@ text:
 
 | YAML key                | Type      | Required | Example                          | Description |
 |-------------------------|-----------|:--------:|----------------------------------|-------------|
-| `display_id`            | id        | вќЊ       | `panel`                           | Display to draw on. Optional, if only one display is defined in the YAML.|
-| `touchscreen_id`        | id        | вќЊ       | `touch`                           | Touch input source. Optional, if only one touchscreen is defined in the YAML. |
-| `server`                | string    | вњ…       | `172.16.0.252:8081`              | WebSocket server address. Must be `hostname_or_IP:port`. |
-| `url`                   | string    | вњ…       | `http://вЂ¦/dashboard`             | Page to open on connect. |
-| `device_id`             | string    | вќЊ       | `"my-device"` or auto (`esp32-<mac>`) | Identifier used by the server. If not set, the component derives `esp32-<mac>` from the chip MAC and still sends it. |
-| `tile_size`             | int       | вќЊ       | `32`                              | Tile edge size in pixels. Helps the server choose tile packing; itвЂ™s best to keep it a multiple of 16. |
-| `full_frame_tile_count` | int       | вќЊ       | `4`                               | Number of tiles the server should use for full-frame updates. |
-| `full_frame_area_threshold` | float | вќЊ       | `0.50`                            | Area delta (fraction of screen) above which the server should send a full frame. |
-| `full_frame_every`      | int       | вќЊ       | `50`                              | Force a full-frame update every N frames (0 disables). |
-| `every_nth_frame`       | int       | вќЊ       | `1`                               | Frame-rate divider. Server should send only every Nth frame. |
-| `min_frame_interval`    | int (ms)  | вќЊ       | `80`                              | Minimum time between frames on the wire, in milliseconds. |
-| `jpeg_quality`          | int       | вќЊ       | `85`                              | JPEG quality hint for the serverвЂ™s encoder. |
-| `max_bytes_per_msg`     | int (B)   | вќЊ       | `14336` or `61440`                | Upper bound for a single WS binary message. |
-| `big_endian`            | bool      | вќЊ       | `true` or `false`                 | Use big-endian RGB565 pixel order for JPEG output (set false for little-endian panels). Default is `true`. |
-| `rotation`              | int       | вќЊ       | 0, 90, 180, 270                   | Enables software rotation for both the display and touchscreen. |
-| `scale`                 | float     | вќЊ       | `1.5`                             | Page zoom (0.5вЂ“4). The page is laid out at the display size divided by the scale and rendered at that device scale factor, so text and controls get bigger. For sharp output the server needs `MAX_DEVICE_SCALE_FACTOR` at least this value. |
-| `on_frame_update`       | action    | вќЊ       | `- logger.log: "The display just received a frame update!"`  | Action that gets triggered each time the display updates (maximum of 1 trigger per second) |
-| `stats_interval`        | time      | вќЊ       | `10s`                             | Logs performance stats (fps, per-frame rx/queue/decode/draw time, queue depth, drops, touch-to-frame latency) at INFO level every interval. Disabled by default. |
-| `current_url_sensor`    | text_sensor | вќЊ      | `name: "Current URL"`            | Exposes the URL currently loaded in the server's headless browser as an ESPHome Text Sensor. Supports on_value automations. |
+| `display_id`            | id        | РІСњРЉ       | `panel`                           | Display to draw on. Optional, if only one display is defined in the YAML.|
+| `touchscreen_id`        | id        | РІСњРЉ       | `touch`                           | Touch input source. Optional, if only one touchscreen is defined in the YAML. |
+| `server`                | string    | РІСљвЂ¦       | `172.16.0.252:8081`              | WebSocket server address. Must be `hostname_or_IP:port`. |
+| `url`                   | string    | РІСљвЂ¦       | `http://РІР‚В¦/dashboard`             | Page to open on connect. |
+| `device_id`             | string    | РІСњРЉ       | `"my-device"` or auto (`esp32-<mac>`) | Identifier used by the server. If not set, the component derives `esp32-<mac>` from the chip MAC and still sends it. |
+| `tile_size`             | int       | РІСњРЉ       | `32`                              | Tile edge size in pixels. Helps the server choose tile packing; itРІР‚в„ўs best to keep it a multiple of 16. |
+| `full_frame_tile_count` | int       | РІСњРЉ       | `4`                               | Number of tiles the server should use for full-frame updates. |
+| `full_frame_area_threshold` | float | РІСњРЉ       | `0.50`                            | Area delta (fraction of screen) above which the server should send a full frame. |
+| `full_frame_every`      | int       | РІСњРЉ       | `50`                              | Force a full-frame update every N frames (0 disables). |
+| `every_nth_frame`       | int       | РІСњРЉ       | `1`                               | Frame-rate divider. Server should send only every Nth frame. |
+| `min_frame_interval`    | int (ms)  | РІСњРЉ       | `80`                              | Minimum time between frames on the wire, in milliseconds. |
+| `jpeg_quality`          | int       | РІСњРЉ       | `85`                              | JPEG quality hint for the serverРІР‚в„ўs encoder. |
+| `max_bytes_per_msg`     | int (B)   | РІСњРЉ       | `14336` or `61440`                | Upper bound for a single WS binary message. |
+| `big_endian`            | bool      | РІСњРЉ       | `true` or `false`                 | Use big-endian RGB565 pixel order for JPEG output (set false for little-endian panels). Default is `true`. |
+| `rotation`              | int       | РІСњРЉ       | 0, 90, 180, 270                   | Enables software rotation for both the display and touchscreen. |
+| `scale`                 | float     | РІСњРЉ       | `1.5`                             | Page zoom (0.5РІР‚вЂњ4). The page is laid out at the display size divided by the scale and rendered at that device scale factor, so text and controls get bigger. For sharp output the server needs `MAX_DEVICE_SCALE_FACTOR` at least this value. |
+| `on_frame_update`       | action    | РІСњРЉ       | `- logger.log: "The display just received a frame update!"`  | Action that gets triggered each time the display updates (maximum of 1 trigger per second) |
+| `stats_interval`        | time      | РІСњРЉ       | `10s`                             | Logs performance stats (fps, per-frame rx/queue/decode/draw time, queue depth, drops, touch-to-frame latency) at INFO level every interval. Disabled by default. |
+| `current_url_sensor`    | text_sensor | РІСњРЉ      | `name: "Current URL"`            | Exposes the URL currently loaded in the server's headless browser as an ESPHome Text Sensor. Supports on_value automations. |
 
 
 ## Recommendations
 
 - **full_frame_tile_count** set to 1 is the most efficient way to do a full-screen update; use it if your network/device memory allows it.
-- **every_nth_frame** must be 1 if you donвЂ™t want to miss changes (though increasing it may reduce server load). I recommend keeping it set to 1.
-- **wifi power_save_mode** вЂ” for maximum responsiveness, set `power_save_mode: none` in the `wifi:` section. ESPHome's default power saving lets the radio sleep between packets, which lowers power draw but adds latency: in testing on an ESP32-S3 it added ~30 ms to every update, cut throughput from ~1.6 MB/s to ~330 KB/s and made a full-screen change take 154 ms instead of 88 ms. Keep the default if power draw or Wi-Fi coexistence matters more than speed. The self-test shows the effect ("Wi-Fi: вЂ¦ ms per update").
+- **every_nth_frame** must be 1 if you donРІР‚в„ўt want to miss changes (though increasing it may reduce server load). I recommend keeping it set to 1.
+- **wifi power_save_mode** РІР‚вЂќ for maximum responsiveness, set `power_save_mode: none` in the `wifi:` section. ESPHome's default power saving lets the radio sleep between packets, which lowers power draw but adds latency: in testing on an ESP32-S3 it added ~30 ms to every update, cut throughput from ~1.6 MB/s to ~330 KB/s and made a full-screen change take 154 ms instead of 88 ms. Keep the default if power draw or Wi-Fi coexistence matters more than speed. The self-test shows the effect ("Wi-Fi: РІР‚В¦ ms per update").
 - **min_frame_interval** caps how often the server sends frames. It protects the device from frames arriving faster than it can decode them (e.g. while scrolling), so it should be at least the device's decode time for a full-screen frame. Run the self-test (`url: "self-test"`): it measures that time and recommends a value.
 - **max_bytes_per_msg** should be larger than your maximum tile size (full-frame or partial).
-- **jpeg_quality** вЂ” lower values encode faster and reduce bandwidth (but increase artifacts). Start at **85**, drop toward **70вЂ“75** if you need speed.
-- **big_endian** вЂ” defaults to **true**. If colors look wrong (swapped/tinted), set `big_endian: false` for panels that require little-endian RGB565.
-- **hw_decode** вЂ” ESP32-P4 only; defaults to **true**. Set to `false` to use the software JPEG decoder.
-- **hw_decode_timeout_ms** вЂ” ESP32-P4 only; defaults to **200**. Timeout passed to the hardware JPEG decoder engine.
-- **Display ownership** вЂ” `remote_webview` draws from its own task, so nothing else may draw to the same display: use `update_interval: never`, no `lambda`/`pages`, `auto_clear_enabled: false`, `show_test_card: false`, and don't call `component.update` on it. Prefer a touchscreen on a separate bus (e.g. I2C) rather than sharing the display's SPI bus.
-- **Red tile / red screen** вЂ” this indicates a tile payload exceeded `max_bytes_per_msg`. Increase `max_bytes_per_msg` or reduce tile size/JPEG quality so each tile fits.
+- **jpeg_quality** РІР‚вЂќ lower values encode faster and reduce bandwidth (but increase artifacts). Start at **85**, drop toward **70РІР‚вЂњ75** if you need speed.
+- **big_endian** РІР‚вЂќ defaults to **true**. If colors look wrong (swapped/tinted), set `big_endian: false` for panels that require little-endian RGB565.
+- **hw_decode** РІР‚вЂќ ESP32-P4 only; defaults to **true**. Set to `false` to use the software JPEG decoder.
+- **hw_decode_timeout_ms** РІР‚вЂќ ESP32-P4 only; defaults to **200**. Timeout passed to the hardware JPEG decoder engine.
+- **Display ownership** РІР‚вЂќ `remote_webview` draws from its own task, so nothing else may draw to the same display: use `update_interval: never`, no `lambda`/`pages`, `auto_clear_enabled: false`, `show_test_card: false`, and don't call `component.update` on it. Prefer a touchscreen on a separate bus (e.g. I2C) rather than sharing the display's SPI bus.
+- **Red tile / red screen** РІР‚вЂќ this indicates a tile payload exceeded `max_bytes_per_msg`. Increase `max_bytes_per_msg` or reduce tile size/JPEG quality so each tile fits.
 
 ## On-screen keyboard
 
