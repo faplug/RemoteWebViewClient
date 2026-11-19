@@ -1,6 +1,6 @@
 # Remote WebView Client
 
-> **This fork (faplug).** Pinned copy of the ESPHome component used by the kitchen panel (ESP32-4848S040). No functional changes: it exists so the firmware can reference a fixed commit instead of upstream `main`. The upstream "Stand With Ukraine" banner is removed from this README.
+> **This fork (faplug).** Pinned copy of the ESPHome component used by the kitchen panel (ESP32-4848S040). No functional changes: it exists so the firmware can reference a fixed commit instead of upstream `main`.
 
 ![Guition-ESP32-S3-4848S040 running Remote WebView](/images/image-001.jpg)
 
